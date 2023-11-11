@@ -1,4 +1,4 @@
-package com.alireza.countriesapplication.presentation.details
+package com.alireza.countriesapplication.presentation.country
 
 import com.alireza.countriesapplication.domain.model.Continent
 import com.alireza.countriesapplication.domain.model.Country

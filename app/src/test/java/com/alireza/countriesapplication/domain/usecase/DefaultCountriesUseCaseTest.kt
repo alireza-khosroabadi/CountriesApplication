@@ -27,16 +27,16 @@ class DefaultCountriesUseCaseTest {
     }
 
     @Test
-    fun `should return success with null when calling get countries`() = runTest {
+    fun `should return success with empty list when calling get countries`() = runTest {
         // Given
-        whenever(repository.getCountries(anyString())).thenReturn(ResultState.Success(null))
+        whenever(repository.getCountries(anyString())).thenReturn(ResultState.Success(emptyList()))
 
         // When
         val countries = useCase.getCountries("test")
 
         // Then
         assertThat(countries).isInstanceOf(ResultState.Success::class.java)
-        assertThat(countries).isEqualTo(ResultState.Success(null))
+        assertThat(countries).isEqualTo(ResultState.Success(emptyList<Country>()))
     }
 
     @Test

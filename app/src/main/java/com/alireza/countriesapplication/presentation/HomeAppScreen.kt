@@ -8,18 +8,21 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.alireza.countriesapplication.presentation.common.ApplicationTopBar
+import com.alireza.uisystem.common.ApplicationTopBar
 import com.alireza.countriesapplication.presentation.navigation.AppNavGraph
 import com.alireza.countriesapplication.presentation.navigation.ScreenRouts
 
 @Composable
 fun HomeAppScreen(navController: NavHostController = rememberNavController()) {
     // Get current back stack entry
-    val backStackEntry = navController.currentBackStackEntry
+    val backStackEntry by navController.currentBackStackEntryAsState()
 
     // Get the name of the current screen
     val currentScreen = ScreenRouts.findByRout(
@@ -32,7 +35,7 @@ fun HomeAppScreen(navController: NavHostController = rememberNavController()) {
         snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
         topBar = {
             ApplicationTopBar(
-                currentScreen = currentScreen,
+                title = stringResource(id = currentScreen.title),
                 canNavigateBack = navController.previousBackStackEntry != null,
                 navigateUp = { navController.navigateUp() }
             )

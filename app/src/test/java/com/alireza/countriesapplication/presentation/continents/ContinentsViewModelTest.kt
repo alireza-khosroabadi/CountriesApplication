@@ -1,32 +1,25 @@
 package com.alireza.countriesapplication.presentation.continents
 
-import androidx.lifecycle.SavedStateHandle
 import app.cash.turbine.test
-import com.google.common.truth.Truth
 import com.alireza.countriesapplication.domain.model.Continent
-import com.alireza.countriesapplication.domain.usecase.CountriesUseCase
 import com.alireza.countriesapplication.domain.usecase.FakeContinentsUseCase
 import com.alireza.countriesapplication.util.Util
+import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import org.junit.After
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class ContinentsViewModelTest {
 
-    @Mock
-    private lateinit var countriesUseCase: CountriesUseCase
 
     private val testDispatcher = StandardTestDispatcher()
-    private val savedStateHandle = SavedStateHandle()
     private lateinit var useCase: FakeContinentsUseCase
     private lateinit var viewModel: ContinentsViewModel
 
@@ -35,9 +28,7 @@ class ContinentsViewModelTest {
     fun setup() {
         useCase = FakeContinentsUseCase()
         viewModel = ContinentsViewModel(
-            savedStateHandle = savedStateHandle,
             continentsUseCase = useCase,
-            countriesUseCase = countriesUseCase,
             mainDispatcher = testDispatcher
         )
     }

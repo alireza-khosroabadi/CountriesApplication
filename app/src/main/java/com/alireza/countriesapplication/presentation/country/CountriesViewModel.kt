@@ -1,17 +1,13 @@
-package com.alireza.countriesapplication.presentation.details
+package com.alireza.countriesapplication.presentation.country
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alireza.countriesapplication.data.di.MainDispatcher
-import com.alireza.countriesapplication.domain.model.Continent
 import com.alireza.countriesapplication.domain.model.ResultState
-import com.alireza.countriesapplication.domain.usecase.ContinentsUseCase
 import com.alireza.countriesapplication.domain.usecase.CountriesUseCase
-import com.alireza.countriesapplication.presentation.continents.ContinentsEvent
-import com.alireza.countriesapplication.presentation.continents.ContinentsState
-import com.alireza.countriesapplication.presentation.details.navigation.continentIdArg
-import com.alireza.countriesapplication.presentation.details.navigation.continentNameArg
+import com.alireza.countriesapplication.presentation.country.navigation.continentIdArg
+import com.alireza.countriesapplication.presentation.country.navigation.continentNameArg
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler

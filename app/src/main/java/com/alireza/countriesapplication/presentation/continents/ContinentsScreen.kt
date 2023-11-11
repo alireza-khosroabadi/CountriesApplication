@@ -21,21 +21,17 @@ import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.alireza.countriesapplication.domain.model.Continent
-import com.alireza.countriesapplication.presentation.common.LoadingItem
-import com.alireza.countriesapplication.ui.theme.CountriesApplicationTheme
+import com.alireza.uisystem.common.LoadingItem
+import com.alireza.uisystem.theme.CountriesApplicationTheme
 
 @Composable
 fun ContinentsScreen(
@@ -48,9 +44,9 @@ fun ContinentsScreen(
         reload()
     }
 
-    Scaffold(modifier = Modifier) { paddingValues ->
+    Box(modifier = Modifier.fillMaxSize()) {
         AnimatedContent(
-            modifier = Modifier.padding(paddingValues),
+            modifier = Modifier,
             targetState = uiState,
             transitionSpec = {
                 fadeIn() togetherWith fadeOut()
