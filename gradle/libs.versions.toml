@@ -7,10 +7,11 @@ app-targetSdk = "34"
 app-compileSdk = "34"
 app-minSdk = "24"
 
-androidGradlePlugin = "8.3.0-alpha12"
+androidGradlePlugin = "8.1.1"
 kotlin = "1.9.0"
 
 kotlinxCoroutines = "1.7.1"
+kotlinCompilerExtensionVersion = "1.5.1"
 
 androidxCore = "1.12.0"
 androidxAppCompat = "1.6.1"
@@ -52,6 +53,7 @@ truth = "1.1.4"
 mockito = "5.1.0"
 nhaarman = "2.2.0"
 navigationRuntimeKtx = "2.7.5"
+material = "1.10.0"
 
 
 [libraries]
@@ -130,7 +132,6 @@ mockito-nhaarman = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotl
 truth = { group = "com.google.truth", name = "truth", version.ref = "truth"}
 
 # Etc
-gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javaxInject" }
 coil-kt = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
@@ -138,15 +139,18 @@ coil-kt-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "
 coil-kt-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize",  version.ref = "kotlin"  }
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 apollo = {id = "com.apollographql.apollo3", version.ref = "apollo"}
+
 
 
 [bundles]
@@ -176,6 +180,7 @@ apollo-test =["apollo-test", "apollo-mock-server"]
 test-ui =["truth",
     "hilt-test",
     "junit",
+    "androidx-compose-ui-test",
     "androidx-test-ext-junit",
     "androidx-test-espresso-core"
 ]

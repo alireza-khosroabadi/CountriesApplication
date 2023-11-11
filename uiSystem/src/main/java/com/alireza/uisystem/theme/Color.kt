@@ -1,4 +1,4 @@
-package com.alireza.countriesapplication.ui.theme
+package com.alireza.uisystem.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -5,17 +5,17 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.apollo)
-    id("kotlin-parcelize")
+    alias(libs.plugins.kotlin.parcelize)
 }
 
 android {
     namespace = "com.alireza.countriesapplication"
-    compileSdk = 34
+    compileSdk = libs.versions.app.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.alireza.countriesapplication"
-        minSdk = 24
-        targetSdk = 34
+        minSdk = libs.versions.app.minSdk.get().toInt()
+        targetSdk = libs.versions.app.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -61,7 +61,7 @@ android {
         getByName("androidTest").assets.srcDirs("src/debug/assets")
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
     packaging {
         resources {
@@ -86,6 +86,7 @@ android {
 dependencies {
 
     // Projects
+    implementation(project(":uiSystem"))
     implementation(libs.androidx.core.ktx)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.bundles.compose)

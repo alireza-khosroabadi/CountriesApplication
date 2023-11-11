@@ -1,4 +1,4 @@
-package com.alireza.countriesapplication.presentation.common
+package com.alireza.uisystem.common
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,7 +8,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
-import com.alireza.countriesapplication.ui.theme.CountriesApplicationTheme
+import com.alireza.uisystem.theme.CountriesApplicationTheme
 
 @Composable
 fun LoadingItem(modifier: Modifier = Modifier) {

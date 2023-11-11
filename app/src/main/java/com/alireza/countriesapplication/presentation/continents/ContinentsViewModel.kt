@@ -1,15 +1,11 @@
 package com.alireza.countriesapplication.presentation.continents
 
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.alireza.countriesapplication.data.di.MainDispatcher
 import com.alireza.countriesapplication.domain.model.Continent
 import com.alireza.countriesapplication.domain.model.ResultState
 import com.alireza.countriesapplication.domain.usecase.ContinentsUseCase
-import com.alireza.countriesapplication.domain.usecase.CountriesUseCase
-import com.alireza.countriesapplication.presentation.continents.ContinentsEvent
-import com.alireza.countriesapplication.presentation.continents.ContinentsState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -21,9 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ContinentsViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
     private val continentsUseCase: ContinentsUseCase,
-    private val countriesUseCase: CountriesUseCase,
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 

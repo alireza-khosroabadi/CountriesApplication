@@ -1,4 +1,4 @@
-package com.alireza.countriesapplication.presentation.details.navigation
+package com.alireza.countriesapplication.presentation.country.navigation
 
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -6,8 +6,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.alireza.countriesapplication.presentation.details.CountriesViewModel
-import com.alireza.countriesapplication.presentation.details.DetailsScreen
+import com.alireza.countriesapplication.presentation.country.CountriesViewModel
+import com.alireza.countriesapplication.presentation.country.DetailsScreen
 import com.alireza.countriesapplication.presentation.navigation.ScreenRouts
 
 internal const val continentNameArg = "continentName"
