@@ -1,4 +1,4 @@
-package com.alireza.countriesapplication.data.di
+package com.alireza.countriesapplication.di
 
 import com.alireza.countriesapplication.data.datasourse.remote.continent.ContinentDataSource
 import com.alireza.countriesapplication.data.datasourse.remote.continent.DefaultContinentDataSource

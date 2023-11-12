@@ -26,7 +26,9 @@ fun HomeAppScreen(navController: NavHostController = rememberNavController()) {
 
     // Get the name of the current screen
     val currentScreen = ScreenRouts.findByRout(
-        backStackEntry?.destination?.route ?: ScreenRouts.ContinentList.rout
+        backStackEntry?.destination?.route
+            .orEmpty()
+            .ifEmpty { ScreenRouts.ContinentList.rout }
     )?: ScreenRouts.ContinentList
 
     val snackBarHostState : SnackbarHostState = remember { SnackbarHostState() }

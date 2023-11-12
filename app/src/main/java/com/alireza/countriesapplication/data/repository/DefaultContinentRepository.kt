@@ -19,11 +19,13 @@ class DefaultContinentRepository @Inject constructor(
                 val continents = response.data?.continents
                     ?.map {
                         it.toContinent()
-                    }?.sortedBy { it.name } ?: emptyList()
+                    }?.sortedBy { it.name }.orEmpty()
                 ResultState.Success(continents)
             } else {
                 ResultState.Failure(
-                    response.errors?.getOrNull(0)?.message ?: "Something went wrong"
+                    response.errors?.getOrNull(0)?.message
+                        .orEmpty()
+                        .ifEmpty { "Something went wrong" }
                 )
             }
         } catch (exception: ApolloException) {

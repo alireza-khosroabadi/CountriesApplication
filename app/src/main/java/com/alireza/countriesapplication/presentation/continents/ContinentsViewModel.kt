@@ -2,7 +2,7 @@ package com.alireza.countriesapplication.presentation.continents
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alireza.countriesapplication.data.di.MainDispatcher
+import com.alireza.countriesapplication.di.MainDispatcher
 import com.alireza.countriesapplication.domain.model.Continent
 import com.alireza.countriesapplication.domain.model.ResultState
 import com.alireza.countriesapplication.domain.usecase.ContinentsUseCase

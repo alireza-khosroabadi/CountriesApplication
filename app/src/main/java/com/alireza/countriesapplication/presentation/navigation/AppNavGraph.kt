@@ -16,7 +16,7 @@ fun AppNavGraph(
     snackBarHostState: SnackbarHostState
 ) {
     NavHost(navController = navController, startDestination = ScreenRouts.ContinentList.rout) {
-        continentListScreen{navController.navigateToCountryList(it.name.orEmpty(), it.code.orEmpty())}
+        continentListScreen{navController.navigateToCountryList(it.code.orEmpty())}
         countryListScreen()
     }
 }

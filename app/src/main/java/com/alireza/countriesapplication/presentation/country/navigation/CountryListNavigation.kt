@@ -10,7 +10,6 @@ import com.alireza.countriesapplication.presentation.country.CountriesViewModel
 import com.alireza.countriesapplication.presentation.country.DetailsScreen
 import com.alireza.countriesapplication.presentation.navigation.ScreenRouts
 
-internal const val continentNameArg = "continentName"
 internal const val continentIdArg = "continentId"
 
 fun NavGraphBuilder.countryListScreen() {
@@ -21,9 +20,8 @@ fun NavGraphBuilder.countryListScreen() {
     }
 }
 
-fun NavController.navigateToCountryList(continentName: String, continentCode:String) {
+fun NavController.navigateToCountryList(continentCode:String) {
     this.navigate(ScreenRouts.CountryList.rout
-        .replace("{$continentNameArg}",continentName)
         .replace("{$continentIdArg}", continentCode
     ))
 }

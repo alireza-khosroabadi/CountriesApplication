@@ -3,11 +3,10 @@ package com.alireza.countriesapplication.presentation.country
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.alireza.countriesapplication.data.di.MainDispatcher
+import com.alireza.countriesapplication.di.MainDispatcher
 import com.alireza.countriesapplication.domain.model.ResultState
 import com.alireza.countriesapplication.domain.usecase.CountriesUseCase
 import com.alireza.countriesapplication.presentation.country.navigation.continentIdArg
-import com.alireza.countriesapplication.presentation.country.navigation.continentNameArg
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -19,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CountriesViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
+    savedStateHandle: SavedStateHandle,
     private val countriesUseCase: CountriesUseCase,
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) : ViewModel() {
@@ -27,7 +26,6 @@ class CountriesViewModel @Inject constructor(
     private val _continentsState = MutableStateFlow(CountriesState())
     val continentsState = _continentsState.asStateFlow()
 
-    private val continentName = savedStateHandle.get<String>(continentNameArg).orEmpty()
     private val continentId = savedStateHandle.get<String>(continentIdArg).orEmpty()
 
     private val exceptionHandler = CoroutineExceptionHandler { _, exception ->

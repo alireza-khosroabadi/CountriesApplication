@@ -13,14 +13,16 @@ class DefaultCountryRepository @Inject constructor(
 ) : CountryRepository {
     override suspend fun getCountries(code: String): ResultState<List<Country>> {
         try {
-            val response = continentDataSource.getContinent(code = code)
+            val response = continentDataSource.getCountries(code = code)
             return if (!response.hasErrors()) {
                 ResultState.Success(
                     response.data?.continent?.toCountry().orEmpty()
                 )
             } else {
                 ResultState.Failure(
-                    response.errors?.getOrNull(0)?.message ?: "Something went wrong"
+                    response.errors?.getOrNull(0)?.message
+                        .orEmpty()
+                        .ifEmpty { "Something went wrong" }
                 )
             }
         } catch (exception: ApolloException) {
