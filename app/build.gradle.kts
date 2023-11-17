@@ -102,6 +102,8 @@ dependencies {
     implementation(platform(libs.okhttp.bom))
     implementation(libs.bundles.network)
 
+    debugImplementation(libs.androidx.compose.ui.tooling)
+
     // Test
     testImplementation(libs.bundles.test)
     testImplementation(libs.bundles.apollo.test)

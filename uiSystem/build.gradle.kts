@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.alireza.uisystem"
+    namespace = "com.alireza.countriesapplication"
     compileSdk = libs.versions.app.compileSdk.get().toInt()
 
     defaultConfig {

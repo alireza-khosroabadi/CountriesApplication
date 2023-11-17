@@ -36,12 +36,13 @@ fun HomeAppScreen(navController: NavHostController = rememberNavController()) {
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
         topBar = {
-            if (currentScreen.showToolbar)
-            ApplicationTopBar(
-                title = stringResource(id = currentScreen.title),
-                canNavigateBack = navController.previousBackStackEntry != null,
-                navigateUp = { navController.navigateUp() }
-            )
+            if (currentScreen.showToolbar) {
+                ApplicationTopBar(
+                    title = stringResource(id = currentScreen.title),
+                    canNavigateBack = navController.previousBackStackEntry != null,
+                    navigateUp = { navController.navigateUp() }
+                )
+            }
         }
     ) { contentPadding ->
         Surface(

@@ -110,7 +110,7 @@ fun CountryItem(modifier: Modifier, item: Country) {
     }
 }
 
-@Preview(name = "Light")
+@Preview( name = "Light")
 @Preview(
     name = "Dark",
     uiMode = Configuration.UI_MODE_NIGHT_YES,
@@ -127,7 +127,7 @@ fun CountryItemPreview() {
                 emoji = "",
                 currency = "",
                 capital = "",
-                phone = "",
+                phone = "98",
                 states = listOf(""),
                 languages = listOf("")
             )
