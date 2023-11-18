@@ -1,0 +1,26 @@
+query countryDetail($country_code: ID!) {
+    country(code: $country_code) {
+        name
+        awsRegion
+        currencies
+        emoji
+        emojiU
+        capital
+        native
+        phones
+        states {
+            code
+            name
+        }
+        subdivisions {
+            code
+            name
+        }
+        languages {
+            name
+            native
+            code
+            rtl
+        }
+    }
+}

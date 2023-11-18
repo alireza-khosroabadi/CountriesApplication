@@ -46,11 +46,7 @@ class DefaultCountriesUseCaseTest {
             Country(
                 name = "testName",
                 emoji = "",
-                currency = "",
-                capital = "",
                 phone = "",
-                states = listOf(""),
-                languages = listOf("")
             )
         )
         whenever(repository.getCountries(anyString())).thenReturn(ResultState.Success(sampleCountries))

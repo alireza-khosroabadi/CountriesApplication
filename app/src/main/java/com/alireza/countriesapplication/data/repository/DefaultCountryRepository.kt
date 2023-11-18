@@ -2,7 +2,7 @@ package com.alireza.countriesapplication.data.repository
 
 import com.apollographql.apollo3.exception.ApolloException
 import com.alireza.countriesapplication.data.datasourse.remote.continent.ContinentDataSource
-import com.alireza.countriesapplication.data.model.toCountry
+import com.alireza.countriesapplication.data.model.toCountryInformation
 import com.alireza.countriesapplication.domain.model.Country
 import com.alireza.countriesapplication.domain.model.ResultState
 import com.alireza.countriesapplication.domain.repository.CountryRepository
@@ -16,7 +16,7 @@ class DefaultCountryRepository @Inject constructor(
             val response = continentDataSource.getCountries(code = code)
             return if (!response.hasErrors()) {
                 ResultState.Success(
-                    response.data?.continent?.toCountry().orEmpty()
+                    response.data?.continent?.toCountryInformation().orEmpty()
                 )
             } else {
                 ResultState.Failure(

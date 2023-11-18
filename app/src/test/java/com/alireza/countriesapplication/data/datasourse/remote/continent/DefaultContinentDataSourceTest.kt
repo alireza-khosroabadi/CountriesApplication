@@ -7,8 +7,10 @@ import com.apollographql.apollo3.testing.enqueueTestResponse
 import com.google.common.truth.Truth.assertThat
 import com.alireza.ContinentQuery
 import com.alireza.ContinentsQuery
+import com.alireza.CountryDetailQuery
 import com.alireza.test.ContinentQuery_TestBuilder.Data
 import com.alireza.test.ContinentsQuery_TestBuilder.Data
+import com.alireza.test.CountryDetailQuery_TestBuilder.Data
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
@@ -67,13 +69,7 @@ class DefaultContinentDataSourceTest {
                 countries = listOf(country {
                     name = "Angola"
                     emoji = "\uD83C\uDDE6"
-                    currency = "AOA"
-                    capital = "Luanda"
                     phone = "244"
-                    languages = listOf(language {
-                        name = "Portuguese"
-                    })
-                    states = listOf()
                 })
             }
         }
@@ -86,7 +82,30 @@ class DefaultContinentDataSourceTest {
             .data
 
         // Then
-        assertThat(data.continent?.countries?.first()?.currency).isEqualTo(actual?.continent?.countries?.first()?.currency)
+        assertThat(data.continent?.countries?.first()?.phone).isEqualTo(actual?.continent?.countries?.first()?.phone)
         assertThat(data.continent?.countries?.first()?.name).isEqualTo(actual?.continent?.countries?.first()?.name)
+    }
+
+    @OptIn(ApolloExperimental::class)
+    @Test
+    fun `testing getCountryInformation`()= runTest {
+        //Given
+        val query = CountryDetailQuery("IR")
+        val data = CountryDetailQuery.Data{
+            country = country {
+                name = "Iran"
+                capital = "Tehran"
+            }
+        }
+        apolloClient.enqueueTestResponse(query, data)
+
+        //When
+        val actual = apolloClient
+            .query(query)
+            .execute()
+            .data
+
+        //Then
+        assertThat(data.country?.name).isEqualTo(actual?.country?.name)
     }
 }

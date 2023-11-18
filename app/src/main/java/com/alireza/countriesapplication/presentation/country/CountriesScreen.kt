@@ -125,11 +125,7 @@ fun CountryItemPreview() {
             item = Country(
                 name = "testName",
                 emoji = "",
-                currency = "",
-                capital = "",
-                phone = "98",
-                states = listOf(""),
-                languages = listOf("")
+                phone = "98"
             )
         )
     }
