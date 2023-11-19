@@ -8,7 +8,7 @@ import com.alireza.countriesapplication.domain.repository.CountryInformationRepo
 import com.apollographql.apollo3.exception.ApolloException
 import javax.inject.Inject
 
-class DefaultCountryInformation @Inject constructor(private val continentDataSource: ContinentDataSource) :
+class DefaultCountryInformationRepository @Inject constructor(private val continentDataSource: ContinentDataSource) :
     CountryInformationRepository {
     override suspend fun countryInformation(countryCode: String): ResultState<CountryInformation?> {
         try {

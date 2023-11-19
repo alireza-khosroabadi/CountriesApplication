@@ -47,6 +47,7 @@ class DefaultCountriesUseCaseTest {
                 name = "testName",
                 emoji = "",
                 phone = "",
+                code = "IR"
             )
         )
         whenever(repository.getCountries(anyString())).thenReturn(ResultState.Success(sampleCountries))

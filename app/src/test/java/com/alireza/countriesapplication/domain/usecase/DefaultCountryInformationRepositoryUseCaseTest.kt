@@ -15,7 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class DefaultCountryInformationUseCaseTest {
+class DefaultCountryInformationRepositoryUseCaseTest {
 
     @Mock
     private lateinit var repository:CountryInformationRepository

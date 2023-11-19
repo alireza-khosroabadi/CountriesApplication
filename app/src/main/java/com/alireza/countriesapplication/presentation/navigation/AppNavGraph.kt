@@ -6,8 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.alireza.countriesapplication.presentation.continents.navigation.continentListScreen
-import com.alireza.countriesapplication.presentation.country.navigation.countryListScreen
-import com.alireza.countriesapplication.presentation.country.navigation.navigateToCountryList
+import com.alireza.countriesapplication.presentation.countryInfo.navigation.countryInfoScreen
+import com.alireza.countriesapplication.presentation.countryInfo.navigation.navigateToCountryInfo
+import com.alireza.countriesapplication.presentation.countryList.navigation.countryListScreen
+import com.alireza.countriesapplication.presentation.countryList.navigation.navigateToCountryList
 
 
 @Composable
@@ -17,6 +19,7 @@ fun AppNavGraph(
 ) {
     NavHost(navController = navController, startDestination = ScreenRouts.ContinentList.rout) {
         continentListScreen{navController.navigateToCountryList(it.code.orEmpty())}
-        countryListScreen()
+        countryListScreen{navController.navigateToCountryInfo(countryCode = it)}
+        countryInfoScreen()
     }
 }

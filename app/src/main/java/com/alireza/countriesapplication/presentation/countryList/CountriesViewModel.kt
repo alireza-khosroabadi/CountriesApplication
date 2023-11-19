@@ -1,4 +1,4 @@
-package com.alireza.countriesapplication.presentation.country
+package com.alireza.countriesapplication.presentation.countryList
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.alireza.countriesapplication.di.MainDispatcher
 import com.alireza.countriesapplication.domain.model.ResultState
 import com.alireza.countriesapplication.domain.usecase.CountriesUseCase
-import com.alireza.countriesapplication.presentation.country.navigation.continentIdArg
+import com.alireza.countriesapplication.presentation.countryList.navigation.continentIdArg
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -23,14 +23,14 @@ class CountriesViewModel @Inject constructor(
     @MainDispatcher private val mainDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val _continentsState = MutableStateFlow(CountriesState())
-    val continentsState = _continentsState.asStateFlow()
+    private val _countryListState = MutableStateFlow(CountriesState())
+    val countryListState = _countryListState.asStateFlow()
 
     private val continentId = savedStateHandle.get<String>(continentIdArg).orEmpty()
 
     private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
-        _continentsState.update { continentsState ->
-            continentsState.copy(
+        _countryListState.update { oldState ->
+            oldState.copy(
                 errorMessage = exception.message ?: "Something went wrong, please try again!"
             )
         }
@@ -43,17 +43,17 @@ class CountriesViewModel @Inject constructor(
     private fun selectContinent(continentCode: String) {
         viewModelScope.launch(mainDispatcher + exceptionHandler) {
             // Loading state
-            _continentsState.update { continentsState ->
-                continentsState.copy(
+            _countryListState.update { oldState ->
+                oldState.copy(
                     isLoading = true
                 )
             }
 
-            // Getting continents
+            // Getting country list
             when (val result = countriesUseCase.getCountries(continentCode)) {
                 is ResultState.Success -> {
-                    _continentsState.update { continentsState ->
-                        continentsState.copy(
+                    _countryListState.update { oldState ->
+                        oldState.copy(
                             countries = result.data,
                             isLoading = false
                         )
@@ -61,8 +61,8 @@ class CountriesViewModel @Inject constructor(
                 }
 
                 is ResultState.Failure -> {
-                    _continentsState.update { continentsState ->
-                        continentsState.copy(
+                    _countryListState.update { oldState ->
+                        oldState.copy(
                             isLoading = false,
                             errorMessage = result.error
                         )
@@ -74,8 +74,8 @@ class CountriesViewModel @Inject constructor(
 
     fun resetSelectedCountry() {
         viewModelScope.launch(mainDispatcher + exceptionHandler) {
-            _continentsState.update { continentsState ->
-                continentsState.copy(
+            _countryListState.update { oldState ->
+                oldState.copy(
                     selectedContinent = null
                 )
             }

@@ -4,6 +4,7 @@ query Continent($continent_code: ID!) {
             name
             emoji
             phone
+            code
         }
     }
 }

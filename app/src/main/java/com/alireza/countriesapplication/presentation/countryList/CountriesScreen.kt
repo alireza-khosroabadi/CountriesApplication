@@ -1,10 +1,11 @@
-package com.alireza.countriesapplication.presentation.country
+package com.alireza.countriesapplication.presentation.countryList
 
 import android.content.res.Configuration
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -33,7 +34,10 @@ import com.alireza.uisystem.common.SearchView
 import com.alireza.uisystem.theme.CountriesApplicationTheme
 
 @Composable
-fun DetailsScreen(countriesState: CountriesState) {
+fun CountryListScreen(
+    countriesState: CountriesState,
+    onNavigateCountryInfo: (countryCode: String) -> Unit
+) {
 
     Box(modifier = Modifier.fillMaxSize()) {
         AnimatedContent(
@@ -49,7 +53,9 @@ fun DetailsScreen(countriesState: CountriesState) {
             } else {
                 CountryList(
                     countries = targetState.countries,
-                )
+                ){
+                    onNavigateCountryInfo(it)
+                }
             }
         }
     }
@@ -58,7 +64,8 @@ fun DetailsScreen(countriesState: CountriesState) {
 @Composable
 fun CountryList(
     modifier: Modifier = Modifier,
-    countries: List<Country>
+    countries: List<Country>,
+    onNavigateCountryInfo: (countryCode: String) -> Unit
 ) {
 
     val textState = remember { mutableStateOf(TextFieldValue("")) }
@@ -85,8 +92,10 @@ fun CountryList(
                         .padding(horizontal = 16.dp)
                         .padding(top = 8.dp)
                         .fillMaxWidth(),
-                    item = country
-                )
+                    item = country,
+                ){
+                    onNavigateCountryInfo(it)
+                }
             }
         }
     }
@@ -94,11 +103,14 @@ fun CountryList(
 }
 
 @Composable
-fun CountryItem(modifier: Modifier, item: Country) {
+fun CountryItem(modifier: Modifier, item: Country, onNavigateCountryInfo: (countryCode: String) -> Unit) {
     Row(
         modifier
             .fillMaxWidth()
-            .padding(4.dp), verticalAlignment = Alignment.CenterVertically
+            .padding(4.dp)
+            .clickable {
+                       onNavigateCountryInfo(item.code.toString())
+            }, verticalAlignment = Alignment.CenterVertically
     ) {
         Text(text = item.emoji.orEmpty(), fontSize = 24.sp)
         Text(text = item.name.orEmpty(), Modifier.padding(start = 4.dp))
@@ -125,9 +137,10 @@ fun CountryItemPreview() {
             item = Country(
                 name = "testName",
                 emoji = "",
-                phone = "98"
+                phone = "98",
+                code = "IR"
             )
-        )
+        ){}
     }
 }
 

@@ -16,7 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.whenever
 
 @RunWith(MockitoJUnitRunner::class)
-class DefaultCountryInformationRepositoryTest {
+class DefaultCountryInformationRepositoryRepositoryTest {
 
     @Mock
     private lateinit var dataSource: ContinentDataSource
@@ -29,7 +29,7 @@ class DefaultCountryInformationRepositoryTest {
 
     @Before
     fun setup(){
-        repository = DefaultCountryInformation(
+        repository = DefaultCountryInformationRepository(
            continentDataSource = dataSource
         )
     }

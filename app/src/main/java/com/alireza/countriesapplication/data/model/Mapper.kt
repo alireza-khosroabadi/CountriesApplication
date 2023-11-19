@@ -15,7 +15,8 @@ fun ContinentQuery.Continent.toCountryInformation(): List<Country> {
         Country(
             name = it.name,
             emoji = it.emoji,
-            phone = it.phone
+            phone = it.phone,
+            code = it.code
 //            states = it.states.map { state -> state.name },
 //            languages = it.languages.map { language -> language.name }
         )

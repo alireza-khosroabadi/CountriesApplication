@@ -1,10 +1,10 @@
 package com.alireza.countriesapplication.di
 
-import com.alireza.countriesapplication.data.datasourse.remote.continent.ContinentDataSource
-import com.alireza.countriesapplication.data.datasourse.remote.continent.DefaultContinentDataSource
 import com.alireza.countriesapplication.data.repository.DefaultContinentRepository
+import com.alireza.countriesapplication.data.repository.DefaultCountryInformationRepository
 import com.alireza.countriesapplication.data.repository.DefaultCountryRepository
 import com.alireza.countriesapplication.domain.repository.ContinentRepository
+import com.alireza.countriesapplication.domain.repository.CountryInformationRepository
 import com.alireza.countriesapplication.domain.repository.CountryRepository
 import dagger.Binds
 import dagger.Module
@@ -27,5 +27,11 @@ abstract class ActivityRetainedRepositoryModule {
     abstract fun bindCountryRepository(
         defaultCountryRepository: DefaultCountryRepository
     ): CountryRepository
+
+    @ActivityRetainedScoped
+    @Binds
+    abstract fun bindCountryInfoRepository(
+        defaultCountryInformationRepository: DefaultCountryInformationRepository
+    ):CountryInformationRepository
 
 }

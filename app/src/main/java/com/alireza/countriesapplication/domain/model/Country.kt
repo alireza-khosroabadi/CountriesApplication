@@ -8,4 +8,5 @@ data class Country(
     val name: String?,
     val emoji: String?,
     val phone: String?,
+    val code: String?
 ) : Parcelable
