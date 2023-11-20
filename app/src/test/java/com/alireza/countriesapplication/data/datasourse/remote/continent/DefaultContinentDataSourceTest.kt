@@ -15,7 +15,6 @@ import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 
-// TODO: should add error scenarios
 class DefaultContinentDataSourceTest {
 
     private lateinit var apolloClient: ApolloClient
