@@ -22,3 +22,5 @@ dependencyResolutionManagement {
 rootProject.name = "CountriesApplication"
 include(":app")
 include(":uiSystem")
+include(":compose-navigation-annotation")
+include(":compose-navigation-kapt")

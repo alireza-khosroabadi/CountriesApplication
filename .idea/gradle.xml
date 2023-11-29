@@ -10,6 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/compose-navigation-annotation" />
+            <option value="$PROJECT_DIR$/compose-navigation-kapt" />
             <option value="$PROJECT_DIR$/uiSystem" />
           </set>
         </option>

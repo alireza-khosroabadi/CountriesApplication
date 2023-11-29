@@ -93,6 +93,8 @@ dependencies {
 
     //Hilt
     implementation(libs.hilt.android)
+    implementation(project(":compose-navigation-annotation"))
+    implementation(project(":compose-navigation-kapt"))
     kapt(libs.hilt.compiler)
 
     androidTestImplementation(platform(libs.androidx.compose.bom))

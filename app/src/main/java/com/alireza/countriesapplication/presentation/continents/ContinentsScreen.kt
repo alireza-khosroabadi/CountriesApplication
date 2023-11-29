@@ -29,11 +29,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.alireza.composeNavigationAnnotation.DestinationScreen
 import com.alireza.countriesapplication.domain.model.Continent
 import com.alireza.uisystem.common.LoadingItem
 import com.alireza.uisystem.theme.CountriesApplicationTheme
 
 @Composable
+@DestinationScreen(route = "continentList")
 fun ContinentsScreen(
     uiState: ContinentsState,
     onSelectContinent: (Continent) -> Unit,

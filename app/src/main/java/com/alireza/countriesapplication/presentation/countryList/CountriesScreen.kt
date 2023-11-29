@@ -28,12 +28,14 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.alireza.composeNavigationAnnotation.DestinationScreen
 import com.alireza.countriesapplication.domain.model.Country
 import com.alireza.uisystem.common.LoadingItem
 import com.alireza.uisystem.common.SearchView
 import com.alireza.uisystem.theme.CountriesApplicationTheme
 
 @Composable
+@DestinationScreen("CountryListScreen")
 fun CountryListScreen(
     countriesState: CountriesState,
     onNavigateCountryInfo: (countryCode: String) -> Unit
