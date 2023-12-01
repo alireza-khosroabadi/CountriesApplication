@@ -3,6 +3,7 @@ plugins {
     id("java-library")
     id("kotlin")
     id("idea")
+    id ("org.jlleitschuh.gradle.ktlint") version "10.1.0"
     alias(libs.plugins.org.jetbrains.kotlin.jvm)
     alias(libs.plugins.kotlin.kapt)
 }
@@ -12,7 +13,9 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+
 dependencies {
+    implementation (libs.kotlin.stdlib)
     implementation(libs.google.autoService)
     implementation(project(":compose-navigation-annotation"))
     kapt(libs.google.autoService)

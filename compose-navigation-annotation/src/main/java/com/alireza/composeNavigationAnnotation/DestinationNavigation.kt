@@ -1,3 +1,12 @@
 package com.alireza.composeNavigationAnnotation
 
-annotation class DestinationNavigation()
+import kotlin.reflect.KClass
+
+
+@Retention(AnnotationRetention.SOURCE)
+@Target(AnnotationTarget.FUNCTION)
+@MustBeDocumented
+annotation class DestinationNavigation(
+    val route:String,
+    vararg val arguments: KClass<*>
+)

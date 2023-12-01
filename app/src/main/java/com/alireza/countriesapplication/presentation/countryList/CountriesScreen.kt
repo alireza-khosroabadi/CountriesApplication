@@ -28,14 +28,17 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.alireza.composeNavigationAnnotation.DestinationNavigation
 import com.alireza.composeNavigationAnnotation.DestinationScreen
+import com.alireza.countriesapplication.domain.model.Continent
 import com.alireza.countriesapplication.domain.model.Country
 import com.alireza.uisystem.common.LoadingItem
 import com.alireza.uisystem.common.SearchView
 import com.alireza.uisystem.theme.CountriesApplicationTheme
 
 @Composable
-@DestinationScreen("CountryListScreen")
+@DestinationNavigation(route = "CountryListScreen",
+    arguments = [String::class ])
 fun CountryListScreen(
     countriesState: CountriesState,
     onNavigateCountryInfo: (countryCode: String) -> Unit
