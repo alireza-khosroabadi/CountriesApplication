@@ -1,9 +1,8 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    id("java-library")
-    id("kotlin")
-    id("idea")
-    id ("org.jlleitschuh.gradle.ktlint") version "10.1.0"
+//    id("java-library")
+//    id("kotlin")
+//    id("idea")
     alias(libs.plugins.org.jetbrains.kotlin.jvm)
     alias(libs.plugins.kotlin.kapt)
 }
@@ -16,12 +15,17 @@ java {
 
 dependencies {
     implementation (libs.kotlin.stdlib)
+    implementation (libs.jetbrains.kotlin.stdlib)
     implementation(libs.google.autoService)
     implementation(project(":compose-navigation-annotation"))
     kapt(libs.google.autoService)
     implementation(libs.squareup.javapoet)
     implementation(libs.squareup.kotlinpoet)
+    implementation(libs.squareup.kotlinpoet.metadeta)
+    implementation(libs.squareup.kotlinpoet.ksp)
     implementation (libs.guava)
+    implementation(libs.symbol.processing.api)
+
 
 //    implementation(platform(libs.androidx.compose.bom))
 //    implementation(libs.android)
@@ -34,12 +38,20 @@ dependencies {
 sourceSets {
     main {
         java {
-            srcDir("${buildDir.absolutePath}/tmp/kapt/main/kotlinGenerated/")
+            srcDir ("${buildDir.absolutePath}/generated/ksp/")
         }
     }
 }
 
-kapt {
-    correctErrorTypes = true
-    useBuildCache = true
-}
+//sourceSets {
+//    main {
+//        java {
+//            srcDir("${buildDir.absolutePath}/tmp/kapt/main/kotlinGenerated/")
+//        }
+//    }
+//}
+
+//kapt {
+//    correctErrorTypes = true
+//    useBuildCache = true
+//}

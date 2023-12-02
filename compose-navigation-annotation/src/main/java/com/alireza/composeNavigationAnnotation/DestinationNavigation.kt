@@ -8,5 +8,10 @@ import kotlin.reflect.KClass
 @MustBeDocumented
 annotation class DestinationNavigation(
     val route:String,
-    vararg val arguments: KClass<*>
-)
+    vararg val argumentsToPass: KClass<*>
+){
+    companion object {
+        const val route = "route"
+        const val arguments = "argumentsToPass"
+    }
+}

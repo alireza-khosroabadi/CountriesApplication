@@ -15,6 +15,7 @@ javaxLangModelApi = "3.0.1"
 kotlin = "1.9.0"
 
 kotlinAnnotationProcessingVersion = "1.6.10"
+kotlinStdlib = "1.9.20"
 kotlinxCoroutines = "1.7.1"
 kotlinCompilerExtensionVersion = "1.5.1"
 
@@ -45,6 +46,8 @@ androidxEspresso = "3.5.1"
 
 coil = "2.4.0"
 javaxInject = "1"
+symbolProcessingApi = "1.9.0-1.0.13"
+symbolProcessorAnnotations = "1.0.15"
 timber = "5.0.1"
 okhttp = "4.10.0"
 retrofit = "2.9.0"
@@ -52,7 +55,7 @@ apollo = "3.8.2"
 gson = "2.10.1"
 room = "2.6.0"
 turbine = "0.12.3"
-ksp = "1.7.20-1.0.6"
+ksp = "1.9.0-1.0.13"
 junit = "1.1.5"
 truth = "1.1.4"
 mockito = "5.1.0"
@@ -76,6 +79,7 @@ guava = { module = "com.google.guava:guava", version.ref = "guava" }
 javax-annotation-api = { module = "javax.annotation:javax.annotation-api", version.ref = "javaxAnnotationApi" }
 javax-lang-model-api = { module = "javax.lang.model:javax.lang.model-api", version.ref = "javaxLangModelApi" }
 jetbrains-kotlin-annotation-processing = { module = "org.jetbrains.kotlin:kotlin-annotation-processing", version.ref = "kotlinAnnotationProcessingVersion" }
+jetbrains-kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlinStdlib" }
 kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib-jdk8", version.ref = "kotlin" }
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
@@ -143,6 +147,8 @@ junit = { group = "junit", name = "junit", version.ref = "junit4" }
 androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidxTestCore" }
 androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
 androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
+symbol-processing-api = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "symbolProcessingApi" }
+symbol-processor-annotations = { module = "com.google.devtools.ksp:symbol-processor-annotations", version.ref = "symbolProcessorAnnotations" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 mockito = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito"}
 mockito-nhaarman = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin", version.ref = "nhaarman"}
@@ -159,6 +165,8 @@ androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navig
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 google-autoService = {group = "com.google.auto.service", name = "auto-service" , version.ref = "autoService"}
 squareup-kotlinpoet = {group = "com.squareup" , name = "kotlinpoet" , version.ref = "kotlinpoet"}
+squareup-kotlinpoet-ksp = {group = "com.squareup" , name = "kotlinpoet-ksp" , version.ref = "kotlinpoet"}
+squareup-kotlinpoet-metadeta = {group = "com.squareup" , name = "kotlinpoet-metadata" , version.ref = "kotlinpoet"}
 squareup-javapoet = {group = "com.squareup" , name = "javapoet" , version.ref = "javapoet"}
 androidx-navigation-common-ktx = { group = "androidx.navigation", name = "navigation-common-ktx", version.ref = "navigationCommonKtx" }
 android = { group = "com.google.android", name = "android", version.ref = "android" }

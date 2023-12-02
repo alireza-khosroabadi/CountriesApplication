@@ -38,7 +38,7 @@ import com.alireza.uisystem.theme.CountriesApplicationTheme
 
 @Composable
 @DestinationNavigation(route = "CountryListScreen",
-    arguments = [String::class ])
+    argumentsToPass = [String::class])
 fun CountryListScreen(
     countriesState: CountriesState,
     onNavigateCountryInfo: (countryCode: String) -> Unit

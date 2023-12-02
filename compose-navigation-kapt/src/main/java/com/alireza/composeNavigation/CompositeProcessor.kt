@@ -10,8 +10,8 @@ import javax.annotation.processing.SupportedOptions
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.TypeElement
 
-@AutoService(Processor::class)
-@SupportedOptions("kapt.kotlin.generated")
+//@AutoService(Processor::class)
+//@SupportedOptions("kapt.kotlin.generated")
 class CompositeProcessor (
 ) : AbstractProcessor() {
 

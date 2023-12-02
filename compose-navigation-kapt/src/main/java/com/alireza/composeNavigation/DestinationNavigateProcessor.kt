@@ -1,13 +1,14 @@
 package com.alireza.composeNavigation
 
 import com.alireza.composeNavigationAnnotation.DestinationNavigation
+import com.alireza.utils.JavaToKotlinTypeMapper
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.DelicateKotlinPoetApi
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
 import com.squareup.kotlinpoet.ParameterSpec
-import com.squareup.kotlinpoet.asClassName
 import com.squareup.kotlinpoet.asTypeName
+import com.squareup.kotlinpoet.metadata.KotlinPoetMetadataPreview
 import java.util.Locale
 import javax.annotation.processing.ProcessingEnvironment
 import javax.annotation.processing.RoundEnvironment
@@ -16,6 +17,8 @@ import javax.lang.model.element.ExecutableElement
 import javax.lang.model.element.TypeElement
 import javax.lang.model.type.MirroredTypesException
 import javax.lang.model.type.TypeMirror
+import javax.tools.Diagnostic
+import kotlin.reflect.KClass
 
 class DestinationNavigateProcessor: AnnotationProcessor {
     override fun process(
@@ -36,7 +39,7 @@ class DestinationNavigateProcessor: AnnotationProcessor {
         return annotationType == DestinationNavigation::class.java.canonicalName
     }
 
-    @OptIn(DelicateKotlinPoetApi::class)
+    @OptIn(DelicateKotlinPoetApi::class, KotlinPoetMetadataPreview::class)
     private fun generateNavigateFunction(
         executableElement: ExecutableElement,
         processingEnv: ProcessingEnvironment
@@ -54,17 +57,22 @@ class DestinationNavigateProcessor: AnnotationProcessor {
 //                    .build()
 //            }
 
+//            val argumentTypes = annotation.arguments.map { getKotlinTypeMirror(it , processingEnv) }
+
+            executableElement.parameters
+
             val arguments = try {
-                annotation.arguments // This may throw MirroredTypesException
+                annotation.argumentsToPass // This may throw MirroredTypesException
                 emptyList() // If no exception is thrown, return an empty list
             } catch (e: MirroredTypesException) {
                 handleMirroredTypesException(e)
             }
 
+            JavaToKotlinTypeMapper.init(processingEnv)
             val parameters = arguments.mapIndexed { index, parameter ->
                 ParameterSpec.builder(
                     "arg$index",
-                    parameter.asTypeName()
+                    JavaToKotlinTypeMapper.mapToKotlinType(parameter)
                 )
                     .build()
             }
@@ -83,7 +91,7 @@ class DestinationNavigateProcessor: AnnotationProcessor {
                 .addCode(
                     """
                 this.navigate("$route/${parameters.joinToString("/") { param -> "${'$'}${param.name}" }}"
-                 //${arguments.joinToString()}   
+                 //${parameters.joinToString()}   
                 )
                 """.trimIndent()
                 )
@@ -94,13 +102,13 @@ class DestinationNavigateProcessor: AnnotationProcessor {
 
             file.writeTo(processingEnv.filer)
         }catch (e:Exception){
-            e.printStackTrace()
+            processingEnv.messager.printMessage(Diagnostic.Kind.ERROR,e.message!!)
         }
     }
 
     private fun handleMirroredTypesException(exception: MirroredTypesException): List<TypeMirror> {
         val types = mutableListOf<TypeMirror>()
-
+exception.printStackTrace()
         // Access the TypeMirrors indirectly
         exception.typeMirrors.forEach { typeMirror ->
             types.add(typeMirror)
@@ -108,4 +116,33 @@ class DestinationNavigateProcessor: AnnotationProcessor {
 
         return types
     }
+
+    private fun getKotlinTypeMirror(kClass: KClass<*>, processingEnv: ProcessingEnvironment): TypeMirror {
+        val elements = processingEnv.elementUtils
+        val typeUtils = processingEnv.typeUtils
+        val typeElement = elements.getTypeElement(kClass.qualifiedName)
+        return typeUtils.getDeclaredType(typeElement)
+    }
+
+//    private fun processKotlinTypes(types: List<TypeMirror>) {
+//        for (type in types) {
+//            if (isKotlinPrimitive(type)) {
+//                // Handle Kotlin primitive type
+//                val kotlinPrimitiveClass = getKotlinPrimitiveClass(type)
+//                // Your processing logic for Kotlin primitive types
+//            } else {
+//                // Process non-primitive Kotlin types
+//                processKotlinType(type)
+//            }
+//        }
+//    }
+//
+//    private fun isKotlinPrimitive(type: TypeMirror): Boolean {
+//        return KotlinBuiltIns.isPrimitiveType(type)
+//    }
+//
+//    private fun getKotlinPrimitiveClass(type: TypeMirror): Class<*> {
+//        return KotlinBuiltIns.getPrimitiveKotlinClass(type).java
+//    }
+
 }
