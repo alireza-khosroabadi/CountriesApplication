@@ -8,7 +8,7 @@ import kotlin.reflect.KClass
 @MustBeDocumented
 annotation class DestinationNavigation(
     val route:String,
-    vararg val argumentsToPass: KClass<*>
+    val argumentsToPass: Array<KClass<*>> = []
 ){
     companion object {
         const val route = "route"

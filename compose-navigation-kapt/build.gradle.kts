@@ -1,8 +1,8 @@
 @Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-//    id("java-library")
-//    id("kotlin")
-//    id("idea")
+    id("java-library")
+    id("kotlin")
+    id("idea")
     alias(libs.plugins.org.jetbrains.kotlin.jvm)
     alias(libs.plugins.kotlin.kapt)
 }
@@ -42,14 +42,6 @@ sourceSets {
         }
     }
 }
-
-//sourceSets {
-//    main {
-//        java {
-//            srcDir("${buildDir.absolutePath}/tmp/kapt/main/kotlinGenerated/")
-//        }
-//    }
-//}
 
 //kapt {
 //    correctErrorTypes = true

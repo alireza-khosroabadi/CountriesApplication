@@ -2,11 +2,8 @@ package com.alireza.composeNavigation
 
 import com.alireza.composeNavigationAnnotation.DestinationNavigation
 import com.alireza.composeNavigationAnnotation.DestinationScreen
-import com.google.auto.service.AutoService
 import javax.annotation.processing.AbstractProcessor
-import javax.annotation.processing.Processor
 import javax.annotation.processing.RoundEnvironment
-import javax.annotation.processing.SupportedOptions
 import javax.lang.model.SourceVersion
 import javax.lang.model.element.TypeElement
 
